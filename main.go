@@ -2,7 +2,7 @@ package main
 
 import (
 	"fmt"
-	"io/ioutil"
+	"io"
 	"net/http"
 	"os"
 	"strconv"
@@ -48,7 +48,7 @@ func main() {
 			}
 			time.Sleep(sleepDuration)
 		} else if res.StatusCode == 200 {
-			body, err := ioutil.ReadAll(res.Body)
+			body, err := io.ReadAll(res.Body)
 			if err != nil {
 				fmt.Fprintf(os.Stderr, "Could not read the response body: %q", err)
 			}
